@@ -5,7 +5,7 @@ To install, simply place a script in the beaTunes [plugins directory](http://hel
 
 For more info about beaTunes plugin development in general, please see [here](https://www.beatunes.com/en/beatunes-plugin-api.html).
 
-For more info on how to get started with beaTlets, please see the [getting started](https://www.beatunes.com/en/beatlet-getting-started.html) page.
+To get started with beaTlets, check out the [getting started](https://www.beatunes.com/en/beatlet-getting-started.html) page.
 
 Help and support is available at http://help.beatunes.com/
 

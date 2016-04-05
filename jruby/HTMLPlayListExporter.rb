@@ -13,6 +13,7 @@ class HTMLPlayListExporter
     end
 
     # Very short description for this exporter.
+    # Starting with beaTunes 4.6, this method is optional.
     def getDescription()
         "HTML"
     end
@@ -45,4 +46,3 @@ class HTMLPlayListExporter
         end
     end
 end
-

@@ -2,7 +2,7 @@
 // More info at https://www.beatunes.com/en/beatlet-playlistexporter.html
 import java.io.File
 import com.tagtraum.core.ProgressListener
-import com.tagtraum.beatunes.library.PlayListExporter 
+import com.tagtraum.beatunes.library.PlayListExporter
 import com.tagtraum.beatunes.library.PlayList
 
 class HTMLPlayListExporter implements PlayListExporter {
@@ -13,6 +13,7 @@ class HTMLPlayListExporter implements PlayListExporter {
     }
 
     // Very short description for this exporter.
+    // Starting with beaTunes 4.6, this method is optional.
     def String getDescription() {
         "HTML"
     }
@@ -39,4 +40,3 @@ class HTMLPlayListExporter implements PlayListExporter {
         }
     }
 }
-

@@ -14,7 +14,10 @@ var beatlet = new PlayListExporter() {
         return "html";
     },
 
-    /* Very short description for this exporter. */
+    /*
+     * Very short description for this exporter.
+     * Starting with beaTunes 4.6, this method is optional.
+     */
     getDescription: function() {
         return "HTML";
     },

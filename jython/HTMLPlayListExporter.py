@@ -12,16 +12,9 @@ class HTMLPlayListExporter(PlayListExporter):
     def getFileExtension(self):
         return "html"
 
-    # Very short description for this exporter.
-    # Starting with beaTunes 4.6, this method is optional.
-    def getDescription(self):
-        return "HTML"
-
-    # Lets you provide an id for this exporter.
-    # The id may be used for referring to an instance of this exporter
-    # in persistent configuration files.
-    def getId(self):
-        return "jython.htmlplaylistexporter"
+    # Due to http://bugs.jython.org/issue2403 the interface
+    # default methods getId() and getDescription()
+    # cannot be overriden. :-(
 
     # Exports the given playlist to the given file.
     #

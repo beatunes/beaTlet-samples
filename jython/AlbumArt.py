@@ -1,16 +1,21 @@
 # Sample beaTlet for beaTunes 4.x
 # Works only in conjunction with AlbumArtShowHideAction.py
 # More info at https://www.beatunes.com/en/beatlet-songcontextview.html
-from java.awt import *
-from javax.swing import *
-from com.tagtraum.core.image import ImageScaler;
+from java.awt import GridBagLayout
+from java.awt import GridBagConstraints
+from java.awt import Insets
+from javax.swing import ImageIcon
+from javax.swing import JPanel
+from javax.swing import JLabel
+from javax.swing import SwingConstants
+from com.tagtraum.core.image import ImageScaler
 from com.tagtraum.beatunes.songtable import SongContextView
 
 # Simple song context view (below main song table in the UI) that shows
 # the selected song's artwork along with album title and artist name.
 # To work, this class requires a companion class, a SongContextComponentShowHideAction.
 class AlbumArt(SongContextView):
-    
+
     def __init__(self):
         # set up the layout
         self.__component = JPanel(GridBagLayout())
@@ -45,8 +50,8 @@ class AlbumArt(SongContextView):
         gbc.weighty = 2
         gbc.gridheight = 1
         self.__component.add(self.__artist, gbc)
-    
-    
+
+
     # Is called when this view should be updated.
     def update(self, song):
         # check for None!
@@ -56,43 +61,42 @@ class AlbumArt(SongContextView):
                 self.__image.setIcon(ImageIcon(ImageScaler.scale(albumArt, 300, 300)));
             else:
                 self.__image.setIcon(None);
-            
+
             self.__album.setText("<html><font size='+3'>" + song.getAlbum() + "</font></html>");
             self.__artist.setText("<html><font color='#555555' size='-1'>by " + song.getArtist() + "</font></html>");
         else:
             self.__image.setIcon(None);
             self.__album.setText(None);
             self.__artist.setText(None);
-        
-    
+
+
 
     # Every SongContextView needs to be accompanied by a
     # SongContextComponentShowHideAction.
     # Return the action's id here.
     def getShowHideActionId(self):
         return "jython.albumart.showhide"
-    
+
 
     # The visual component to be shown in this view.
     def getComponent(self):
         return self.__component
-    
+
 
     def setApplication(self, application):
         self.__application = application
-    
+
 
     def getApplication(self):
         return self.__application
-    
+
 
     def getId(self):
         return "jython.albumart"
-    
+
 
     def init(self):
         pass
-    
+
     def shutdown(self):
         pass
-

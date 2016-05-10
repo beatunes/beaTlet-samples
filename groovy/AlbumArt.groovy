@@ -4,7 +4,7 @@
 import javax.swing.*
 import java.awt.*
 import com.tagtraum.core.app.*
-import com.tagtraum.core.image.*;
+import com.tagtraum.core.image.*
 import com.tagtraum.audiokern.AudioSong
 import com.tagtraum.beatunes.*
 import com.tagtraum.beatunes.songtable.SongContextView
@@ -13,13 +13,13 @@ import com.tagtraum.beatunes.songtable.SongContextView
 // the selected song's artwork along with album title and artist name.
 // To work, this class requires a companion class, a SongContextComponentShowHideAction.
 class AlbumArt implements SongContextView {
-    
+
     BeaTunes application
     JComponent component
     JLabel image
     JLabel album
     JLabel artist
-    
+
     AlbumArt() {
         // set up the layout
         component = new JPanel(new GridBagLayout())
@@ -54,23 +54,23 @@ class AlbumArt implements SongContextView {
         gbc.gridheight = 1
         component.add(artist, gbc)
     }
-    
+
     // Is called when this view should be updated.
     def void update(AudioSong song) {
         // check for null!
         if (song != null) {
             Image albumArt = song.getImage()
             if (albumArt != null) {
-                image.setIcon(new ImageIcon(ImageScaler.scale(albumArt, 300, 300)));
+                image.setIcon(new ImageIcon(ImageScaler.scale(albumArt, 300, 300)))
             } else {
-                image.setIcon(null);
+                image.setIcon(null)
             }
-            album.setText("<html><font size='+3'>" + song.getAlbum() + "</font></html>");
-            artist.setText("<html><font color='#555555' size='-1'>by " + song.getArtist() + "</font></html>");
+            album.setText("<html><font size='+3'>" + song.getAlbum() + "</font></html>")
+            artist.setText("<html><font color='#555555' size='-1'>by " + song.getArtist() + "</font></html>")
         } else {
-            image.setIcon(null);
-            album.setText(null);
-            artist.setText(null);
+            image.setIcon(null)
+            album.setText(null)
+            artist.setText(null)
         }
     }
 
@@ -104,4 +104,3 @@ class AlbumArt implements SongContextView {
     def void shutdown() {
     }
 }
-

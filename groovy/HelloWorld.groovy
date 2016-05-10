@@ -2,7 +2,6 @@
 // More info at https://www.beatunes.com/en/beatlet-getting-started.html
 class HelloWorld {
     public HelloWorld() {
-        System.err.println "Hello World";
+        System.err.println "Hello World"
     }
 }
-

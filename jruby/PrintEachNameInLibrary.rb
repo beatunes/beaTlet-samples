@@ -17,7 +17,7 @@ class PrintEachNameInLibrary < LibraryBatchAction
         # include is the JRuby way of implementing interfaces
         include Java::com.tagtraum.beatunes.action.standard.LibraryBatchAction::EachSongProcessor
 
-        @@log = LoggerFactory.getLogger("PrintEachNameInLibrary.rb");
+        @@log = LoggerFactory.getLogger("PrintEachNameInLibrary.rb")
 
         # Called once, before processing starts.
         def startProcessing(count)
@@ -62,13 +62,12 @@ class PrintEachNameInLibrary < LibraryBatchAction
     # We need to ask the user, whether he really wants to do this.
     # How we ask is defined here.
     def getConfirmationMessage
-        "Do you really want to print all the song names in this library to the log?";
+        "Do you really want to print all the song names in this library to the log?"
     end
 
     # Factory method that creates the processor for each song.
     def createEachSongProcessor
-        SongPrinter.new;
+        SongPrinter.new
     end
 
 end
-

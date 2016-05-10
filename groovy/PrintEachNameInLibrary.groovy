@@ -15,7 +15,7 @@ class PrintEachNameInLibrary extends LibraryBatchAction {
     // interface. Its process method is called for each song.
     class SongPrinter implements EachSongProcessor {
 
-        static log = LoggerFactory.getLogger("PrintEachNameInLibrary.groovy");
+        static log = LoggerFactory.getLogger("PrintEachNameInLibrary.groovy")
 
         // Called once, before processing starts.
         def void startProcessing(int count) {
@@ -67,4 +67,3 @@ class PrintEachNameInLibrary extends LibraryBatchAction {
         new SongPrinter()
     }
 }
-

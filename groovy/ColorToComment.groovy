@@ -1,6 +1,6 @@
 // Sample beaTlet for beaTunes 4.x
 // More info at https://www.beatunes.com/en/beatlet-songanalysistask.html
-import java.awt.Color;
+import java.awt.Color
 import com.tagtraum.audiokern.*
 import com.tagtraum.beatunes.analysis.*
 import org.slf4j.*
@@ -170,7 +170,7 @@ class ColorToComment extends SongAnalysisTask {
     }
 
     private def String toString(final Color color) {
-        final float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
+        final float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null)
         int h = (int)(hsb[0] * 15 + 0.5)
         int s = (int)(hsb[1] * 15 + 0.5)
         int b = (int)(hsb[2] * 15 + 0.5)

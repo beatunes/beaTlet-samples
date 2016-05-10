@@ -36,7 +36,7 @@ class HTMLPlayListExporter
             f = File.new(file.toString, "w")
             f.write("<html>\n<body>\n<h1>#{playList.getName}</h1>\n<ol>\n")
             playList.getSongs.each{ |song|
-                f.write("<li>#{song.getName}</li>\n");
+                f.write("<li>#{song.getName}</li>\n")
             }
             f.write("</ol>\n</body>\n</html>\n")
         ensure

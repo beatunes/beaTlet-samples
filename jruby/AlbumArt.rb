@@ -11,16 +11,16 @@ java_import java.awt.GridBagLayout
 java_import java.awt.GridBagConstraints
 java_import java.awt.Image
 java_import java.awt.Insets
-java_import com.tagtraum.core.image.ImageScaler;
+java_import com.tagtraum.core.image.ImageScaler
 
 # Simple song context view (below main song table in the UI) that shows
 # the selected song's artwork along with album title and artist name.
 # To work, this class requires a companion class, a SongContextComponentShowHideAction.
 class AlbumArt
-        
+
     include Java::com.tagtraum.beatunes.songtable.SongContextView
-    
-    def initialize 
+
+    def initialize
         # set up the layout
         @component = JPanel.new(GridBagLayout.new())
         @image = JLabel.new()
@@ -54,54 +54,53 @@ class AlbumArt
         gbc.gridheight = 1
         @component.add(@artist, gbc)
     end
-    
+
     # Is called when this view should be updated.
-    def update(song) 
+    def update(song)
         # check for nil!
-        if (!song.nil?) 
+        if (!song.nil?)
             albumArt = song.getImage()
-            if (!albumArt.nil?) 
-                @image.setIcon(ImageIcon.new(ImageScaler.scale(albumArt, 300, 300)));
-            else 
-                @image.setIcon(nil);
+            if (!albumArt.nil?)
+                @image.setIcon(ImageIcon.new(ImageScaler.scale(albumArt, 300, 300)))
+            else
+                @image.setIcon(nil)
             end
-            @album.setText("<html><font size='+3'>#{song.getAlbum}</font></html>");
-            @artist.setText("<html><font color='#555555' size='-1'>by #{song.getArtist}</font></html>");
-        else 
-            @image.setIcon(nil);
-            @album.setText(nil);
-            @artist.setText(nil);
+            @album.setText("<html><font size='+3'>#{song.getAlbum}</font></html>")
+            @artist.setText("<html><font color='#555555' size='-1'>by #{song.getArtist}</font></html>")
+        else
+            @image.setIcon(nil)
+            @album.setText(nil)
+            @artist.setText(nil)
         end
     end
 
     # Every SongContextView needs to be accompanied by a
     # SongContextComponentShowHideAction.
     # Return the action's id here.
-    def getShowHideActionId() 
+    def getShowHideActionId()
         "jruby.albumart.showhide"
     end
 
     # The visual component to be shown in this view.
-    def getComponent() 
+    def getComponent()
         @component
     end
 
-    def setApplication(application) 
+    def setApplication(application)
         @application = application
     end
 
-    def getApplication() 
+    def getApplication()
         @application
     end
 
-    def getId() 
+    def getId()
         "jruby.albumart"
     end
 
-    def init() 
+    def init()
     end
 
-    def shutdown() 
+    def shutdown()
     end
 end
-

@@ -14,7 +14,7 @@ class HTMLPlayListExporter(PlayListExporter):
 
     # Due to http://bugs.jython.org/issue2403 the interface
     # default methods getId() and getDescription()
-    # cannot be overriden. :-(
+    # cannot be overridden. :-(
 
     # Exports the given playlist to the given file.
     #

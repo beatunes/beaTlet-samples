@@ -50,7 +50,6 @@ class OpenPlaylistExternallyAction extends BaseAction {
             exporter.export(file, playlist, null)
             log.info("Opening ${file} in external program.")
             Desktop.getDesktop().open(file)
-            throw new NullPointerException("sdvf")
         } catch (Exception e) {
             log.error("Failed to export and open playlist.", e);
             new MessageDialog(

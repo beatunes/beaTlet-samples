@@ -1,4 +1,4 @@
-// Sample beaTlet for beaTunes 4.x
+// Sample beaTlet for beaTunes 5.x
 // More info at https://www.beatunes.com/en/beatlet-getting-started.html
 
 /*
@@ -56,7 +56,7 @@ var beatlet = new BaseAction() {
         var ids = beatletSuper.getSelectedSongIds()
         for (var i=0; i<ids.length; i++) {
             // obtain the AudioSong object
-            var song = beatletSuper.getApplication().getiTunesMusicLibrary().getSong(ids[i]);
+            var song = beatletSuper.getApplication().getMediaLibrary().getSong(ids[i]);
             // register a SongPropertyChangeListener, so that
             // any changes are displayed right away.
             song.addPropertyChangeListener(new SongPropertyChangeListener(beatletSuper.getApplication().getMainWindow().getSongTable().getSongTable(), song));

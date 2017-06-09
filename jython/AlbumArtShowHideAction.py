@@ -1,4 +1,4 @@
-# Sample beaTlet for beaTunes 4.x
+# Sample beaTlet for beaTunes 5.x
 # Works only in conjunction with AlbumArt.py
 # More info at https://www.beatunes.com/en/beatlet-songcontextview.html
 from javax.swing import Action

@@ -1,4 +1,4 @@
-# Sample beaTlet for beaTunes 4.x
+# Sample beaTlet for beaTunes 5.x
 # More info at https://www.beatunes.com/en/beatlet-getting-started.html
 from javax.swing import Action
 from com.tagtraum.core.app import AbsoluteActionLocation
@@ -32,7 +32,7 @@ class ResetReplayGain(BaseAction):
         for id in ids:
             # obtain the AudioSong object
             # special cast to java.lang.Long necessary!!
-            song = self.getApplication().getiTunesMusicLibrary().getSong(id)
+            song = self.getApplication().getMediaLibrary().getSong(id)
             # register a SongPropertyChangeListener, so that
             # any changes are displayed right away.
             song.addPropertyChangeListener(

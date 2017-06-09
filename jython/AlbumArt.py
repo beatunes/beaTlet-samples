@@ -1,4 +1,4 @@
-# Sample beaTlet for beaTunes 4.x
+# Sample beaTlet for beaTunes 5.x
 # Works only in conjunction with AlbumArtShowHideAction.py
 # More info at https://www.beatunes.com/en/beatlet-songcontextview.html
 from java.awt import GridBagLayout

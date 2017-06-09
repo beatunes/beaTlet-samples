@@ -1,4 +1,4 @@
-// Sample beaTlet for beaTunes 4.x
+// Sample beaTlet for beaTunes 5.x
 // More info at https://www.beatunes.com/en/beatlet-getting-started.html
 
 
@@ -33,7 +33,7 @@ class ResetReplayGain extends BaseAction {
         long[] ids = getSelectedSongIds()
         for (long id : ids) {
             // obtain the AudioSong object
-            AudioSong song = getApplication().getiTunesMusicLibrary().getSong(id)
+            AudioSong song = getApplication().getMediaLibrary().getSong(id)
             // register a SongPropertyChangeListener, so that
             // any changes are displayed right away.
             song.addPropertyChangeListener(new SongPropertyChangeListener(getApplication().getMainWindow().getSongTable().getSongTable(), song))

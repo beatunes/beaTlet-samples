@@ -1,4 +1,4 @@
-// Sample beaTlet for beaTunes 4.x
+// Sample beaTlet for beaTunes 5.x
 // More info at https://www.beatunes.com/en/beatlet-songanalysistask.html
 import com.tagtraum.audiokern.*
 import com.tagtraum.audiokern.key.*

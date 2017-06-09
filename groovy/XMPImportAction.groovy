@@ -1,4 +1,4 @@
-// Sample beaTlet for beaTunes 4.x
+// Sample beaTlet for beaTunes 5.x
 // More info at https://www.beatunes.com/en/beatlet-getting-started.html
 import org.slf4j.LoggerFactory
 import javax.swing.*
@@ -48,7 +48,7 @@ class XMPImportAction extends BaseAction {
     }
 
     def void actionPerformed(ActionEvent actionEvent) {
-        final library = getApplication().getiTunesMusicLibrary()
+        final library = getApplication().getMediaLibrary()
         final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance()
         factory.setNamespaceAware(true)
         // we're being super sloppy, so that we don't have to extract just he XMP from the file

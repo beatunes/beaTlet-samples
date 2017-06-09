@@ -1,4 +1,4 @@
-# Sample beaTlet for beaTunes 4.x
+# Sample beaTlet for beaTunes 5.x
 # More info at https://www.beatunes.com/en/beatlet-getting-started.html
 require 'java'
 
@@ -37,7 +37,7 @@ class ResetReplayGain < BaseAction
         for id in ids
             # obtain the AudioSong object
             # special cast to java.lang.Long necessary!!
-            song = getApplication().getiTunesMusicLibrary().getSong(id.to_java(java.lang.Long))
+            song = getApplication().getMediaLibrary().getSong(id.to_java(java.lang.Long))
             # register a SongPropertyChangeListener, so that
             # any changes are displayed right away.
             song.addPropertyChangeListener(

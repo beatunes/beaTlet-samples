@@ -1,4 +1,4 @@
-// Sample beaTlet for beaTunes 4.x
+// Sample beaTlet for beaTunes 5.x
 // More info at https://www.beatunes.com/en/beatlet-getting-started.html
 import java.awt.Toolkit
 import java.awt.event.*
@@ -64,9 +64,6 @@ class KeyAtBPM extends BaseAction {
             table.setDefaultRenderer(Tempo.class, new TempoRenderer())
             table.setDefaultRenderer(Key.class, new KeyRenderer(getApplication()))
             table.setPreferredScrollableViewportSize(table.getPreferredSize())
-            NumberFormat format = NumberFormat.getInstance()
-            format.setMaximumFractionDigits(1)
-            format.setMinimumFractionDigits(1)
             MessageDialog dialog = new MessageDialog(
                 getApplication().getMainWindow(),
                 "How the key would change when played<br>at a given BPM without keylock:",
@@ -79,6 +76,9 @@ class KeyAtBPM extends BaseAction {
                 : (song.getAlbumArtist() != null && !song.getAlbumArtist().isEmpty()
                     ? song.getAlbumArtist()
                     : "<" + getApplication().localize("unknown") + ">")
+            NumberFormat format = NumberFormat.getInstance()
+            format.setMaximumFractionDigits(1)
+            format.setMinimumFractionDigits(1)
             dialog.setTitle("\"" + song.getName()
                 + "\" - " + artist
                 + " - " + format.format(song.getTempo().getTempo(TempoUnit.BPM))
@@ -88,6 +88,9 @@ class KeyAtBPM extends BaseAction {
         }
     }
 
+    /**
+     * Renderer for the Tempo class so that we can do some formatting.
+     */
     class TempoRenderer extends DefaultTableCellRenderer {
 
         NumberFormat format
@@ -105,6 +108,10 @@ class KeyAtBPM extends BaseAction {
         }
     }
 
+    /**
+     * Renderer for the Key class so that we can do some formatting,
+     * in particular honor the KeyTextRenderer configured in the preferences.
+     */
     class KeyRenderer extends DefaultTableCellRenderer {
 
         BeaTunes application
@@ -120,6 +127,9 @@ class KeyAtBPM extends BaseAction {
         }
     }
 
+    /**
+     * Model for the table that is going to be displayed.
+     */
     class BPMShiftModel implements TableModel {
 
         BeaTunes application
@@ -163,7 +173,8 @@ class KeyAtBPM extends BaseAction {
         def Object getValueAt(int row, int col) {
             int halfToneShifts = row-5
             if (col == 0) {
-                return new Tempo((float)(baseTempo.getTempo(TempoUnit.BPM) * Math.pow(2, halfToneShifts / 12f)), TempoUnit.BPM)
+                return new Tempo((float)(baseTempo.getTempo(TempoUnit.BPM)
+                    * Math.pow(2, halfToneShifts / 12f)), TempoUnit.BPM)
             }
             else if (col == 1) {
                 Tone newTonic = Tone.values()[(baseKey.getTonic().ordinal() + halfToneShifts) % 12];

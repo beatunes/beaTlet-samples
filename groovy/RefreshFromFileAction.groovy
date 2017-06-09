@@ -11,6 +11,9 @@ import com.tagtraum.beatunes.action.*
 import com.tagtraum.beatunes.songtable.SongPropertyChangeListener
 
 /*
+ * Please note that this beaTlet only serves as example.
+ * Comparable functionality is already built into beaTunes 5.
+ *
  * Simple beaTlet for iTunes-based music libraries that allows
  * re-reading some metadata from the underlying file.
  * Note that some data may be deleted, if the data exists

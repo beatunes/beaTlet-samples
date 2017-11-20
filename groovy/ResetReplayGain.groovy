@@ -36,7 +36,7 @@ class ResetReplayGain extends BaseAction {
             AudioSong song = getApplication().getMediaLibrary().getSong(id)
             // register a SongPropertyChangeListener, so that
             // any changes are displayed right away.
-            song.addPropertyChangeListener(new SongPropertyChangeListener(getApplication().getMainWindow().getSongTable().getSongTable(), song))
+            song.addPropertyChangeListener(new SongPropertyChangeListener(getApplication().getMainWindow().getSongTable().getTable(), id))
             // do something with the object.
             // don't forget that you are on the EDT!
             // so whatever you do here, should be quick.

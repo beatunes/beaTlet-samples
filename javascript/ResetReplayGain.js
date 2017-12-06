@@ -59,7 +59,7 @@ var beatlet = new BaseAction() {
             var song = beatletSuper.getApplication().getMediaLibrary().getSong(ids[i]);
             // register a SongPropertyChangeListener, so that
             // any changes are displayed right away.
-            song.addPropertyChangeListener(new SongPropertyChangeListener(beatletSuper.getApplication().getMainWindow().getSongTable().getSongTable(), song));
+            song.addPropertyChangeListener(new SongPropertyChangeListener(beatletSuper.getApplication().getMainWindow().getSongTable().getTable(), ids[i]));
             // do something with the object.
             // don't forget that you are on the EDT!
             // so whatever you do here, should be quick.

@@ -7,6 +7,7 @@ import java.awt.Cursor
 import java.text.SimpleDateFormat
 import java.io.InputStreamReader
 import java.io.FileInputStream
+import java.nio.file.Paths
 import com.tagtraum.core.OperatingSystem
 import com.tagtraum.core.app.*
 import com.tagtraum.beatunes.MessageDialog
@@ -49,16 +50,17 @@ class ImportTraktorDatesAndCounts  extends BaseAction {
             try {
                 factory = XMLInputFactory.newInstance()
                 reader = factory.createXMLEventReader(new InputStreamReader(new FileInputStream(collection), "UTF-8"))
+                String location = null
                 while(reader.hasNext()) {
                     XMLEvent event = reader.next()
                     if (event.isStartElement()) {
                         StartElement element = event.asStartElement()
-                        String location = null
                         if (element.getName().getLocalPart().equals("LOCATION")) {
                             location = getLocation(element)
                         }
-                        if (element.getName().getLocalPart().equals("INFO")) {
+                        if (location != null && element.getName().getLocalPart().equals("INFO")) {
                             importInfo(element, location)
+                            location = null
                         }
                     }
                 }
@@ -130,7 +132,7 @@ class ImportTraktorDatesAndCounts  extends BaseAction {
     }
 
     def AudioSong getSong(String location) {
-        AudioSongLocation audioSongLocation = new AudioSongLocation(location)
+        AudioSongLocation audioSongLocation = new AudioSongLocation(Paths.get(location))
         List<AudioSong> songs = getApplication().getMediaLibrary().getSongsWithProperties(Collections.singletonMap("location", audioSongLocation.getLocation()))
         if (songs.isEmpty() && audioSongLocation.isFile() && audioSongLocation.getLocation().contains("/localhost/")) {
             songs = getApplication().getMediaLibrary().getSongsWithProperties(Collections.singletonMap("location", audioSongLocation.getLocation().replace("localhost", "")))

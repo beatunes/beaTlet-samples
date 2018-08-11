@@ -43,4 +43,4 @@ class ResetReplayGain(BaseAction):
             # so whatever you do here, should be quick.
             # if not, start a new thread for your work.
             song.setAlbumReplayGain(None, False)
-            song.setTrackReplayGain(None, False)
+            song.setTrackReplayGain(None, True)

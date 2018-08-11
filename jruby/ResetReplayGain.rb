@@ -48,7 +48,7 @@ class ResetReplayGain < BaseAction
             # so whatever you do here, should be quick.
             # if not, start a new thread for your work.
             song.setAlbumReplayGain(nil, false)
-            song.setTrackReplayGain(nil, false)
+            song.setTrackReplayGain(nil, true)
         end
     end
 end

@@ -42,7 +42,7 @@ class ResetReplayGain extends BaseAction {
             // so whatever you do here, should be quick.
             // if not, start a new thread for your work.
             song.setAlbumReplayGain(null, false)
-            song.setTrackReplayGain(null, false)
+            song.setTrackReplayGain(null, true)
         }
     }
 }

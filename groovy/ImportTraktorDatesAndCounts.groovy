@@ -29,7 +29,7 @@ class ImportTraktorDatesAndCounts  extends BaseAction {
     }
 
     def void init() {
-        putValue(Action.NAME, "Import Traktor Dates & Counts")
+        putValue(Action.NAME, "Import Traktor Dates, Counts & Comment 2")
     }
 
     def ActionLocation[] getActionLocations() {
@@ -38,6 +38,15 @@ class ImportTraktorDatesAndCounts  extends BaseAction {
     }
 
     def void actionPerformed(ActionEvent actionEvent) {
+        int res = new MessageDialog(
+            getApplication().getMainWindow(),
+            "<html><b>Do you really want to import Traktor dates, counts, and comment 2?</b><br><br>"
+            + "This will overwrite all existing dates, counts, and the custom1 field.</html>",
+            JOptionPane.QUESTION_MESSAGE,
+            JOptionPane.YES_NO_OPTION
+        ).showDialog()
+        if (res != JOptionPane.YES_OPTION) return
+
         // show dialog that lets user select the collection.nml file
         final File collection = getCollectionNML()
         if (collection == null) return
@@ -99,7 +108,11 @@ class ImportTraktorDatesAndCounts  extends BaseAction {
         try {
             Attribute playcount = element.getAttributeByName(new QName("PLAYCOUNT"))
             Attribute lastPlayed = element.getAttributeByName(new QName("LAST_PLAYED"))
-            if (playcount != null || lastPlayed != null) {
+            // probably for historic reasons, Traktor calls comment 2 "rating"
+            // its .nml file.
+            // we map its contents to the field custom1.
+            Attribute rating = element.getAttributeByName(new QName("RATING"))
+            if (playcount != null || lastPlayed != null || rating != null) {
                 song = getSong(location)
                 if (song != null) {
                     if (lastPlayed != null) {
@@ -109,6 +122,10 @@ class ImportTraktorDatesAndCounts  extends BaseAction {
                     if (playcount != null) {
                         log.debug("Setting playcount for " + song + ": " + playcount.getValue())
                         song.setPlayCount(Integer.valueOf(playcount.getValue()))
+                    }
+                    if (rating != null) {
+                        log.debug("Setting rating/comment2/custom1 for " + song + ": " + rating.getValue())
+                        song.setCustom1(rating.getValue())
                     }
                 } else {
                     log.info("Failed to find song for location " + location)

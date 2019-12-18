@@ -29,8 +29,9 @@ class HTMLPlayListExporter
     #
     # file to write to
     # playlist to export
+    # useRelativePathsIfPossible boolean flag
     # progressListener that lets you report... well, progress
-    def export(file, playList, progressListener)
+    def export(file, playList, useRelativePathsIfPossible progressListener)
         f = nil
         begin
             f = File.new(file.toString, "w")

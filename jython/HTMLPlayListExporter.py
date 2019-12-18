@@ -20,8 +20,9 @@ class HTMLPlayListExporter(PlayListExporter):
     #
     # file to write to
     # playlist to export
+    # useRelativePathsIfPossible boolean flag
     # progressListener that lets you report... well, progress
-    def export(self, file, playList, progressListener):
+    def export(self, file, playList, useRelativePathsIfPossible progressListener):
         f = None
         try:
             f = open(file.toString(), 'w')

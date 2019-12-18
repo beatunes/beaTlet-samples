@@ -36,9 +36,10 @@ var beatlet = new PlayListExporter() {
      *
      * file to write to
      * playlist to export
+     * useRelativePathsIfPossible boolean flag
      * progressListener that lets you report... well, progress
      */
-    export: function(file, playList, progressListener) {
+    export: function(file, playList, useRelativePathsIfPossible, progressListener) {
         var writer = new FileWriter(file.toString());
         try {
             writer.write("<html>\n<body>\n<h1>" + playList.getName() + "</h1>\n<ol>\n");

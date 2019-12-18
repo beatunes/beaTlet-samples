@@ -29,8 +29,9 @@ class HTMLPlayListExporter implements PlayListExporter {
     //
     // file to write to
     // playlist to export
+    // useRelativePathsIfPossible
     // progressListener that lets you report... well, progress
-    def void export(File file, PlayList playList, ProgressListener progressListener) {
+    def void export(File file, PlayList playList, boolean useRelativePathsIfPossible, ProgressListener progressListener) {
         file.withWriter { f ->
             f.writeLine("<html>\n<body>\n<h1>${playList.getName()}</h1>\n<ol>")
             playList.getSongs().each() { song ->

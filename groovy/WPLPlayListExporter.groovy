@@ -33,8 +33,9 @@ class WPLPlayListExporter implements PlayListExporter {
     //
     // file to write to
     // playlist to export
+    // useRelativePathsIfPossible (is ignored in this example)
     // progressListener that lets you report... well, progress
-    def void export(File file, PlayList playList, ProgressListener progressListener) {
+    def void export(File file, PlayList playList, boolean useRelativePathsIfPossible, ProgressListener progressListener) {
         file.withWriter { f ->
             f.writeLine("<?wpl version=\"1.0\"?>\n<smil>\n  <head>\n    <meta name=\"Generator\" content=\"beaTunes4 groovy.wplplaylistexporter\"/>\n"
                 + "    <meta name=\"ItemCount\" content=\"${playList.getUnfilteredSize()}\"/>\n"

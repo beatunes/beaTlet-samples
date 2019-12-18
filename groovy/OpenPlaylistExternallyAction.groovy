@@ -47,7 +47,7 @@ class OpenPlaylistExternallyAction extends BaseAction {
             final file = File.createTempFile("beaTunes_OpenPlaylistExternally_", "." + format)
             final playlist = getApplication().getMainWindow().getPlayListTree().getSelectedPlayList()
             log.info("Exporting playlist ${playlist} to ${file}")
-            exporter.export(file, playlist, null)
+            exporter.export(file, playlist, false null)
             log.info("Opening ${file} in external program.")
             Desktop.getDesktop().open(file)
         } catch (Exception e) {

@@ -17,7 +17,7 @@ class CustomKeyRenderer implements KeyTextRenderer {
         // Let's shift by 8 and make sure 0 is converted to 12.
         int i = (key.ordinal() + 8) % 12
         i = i == 0 ? 12 : i
-        String ab = key.isMajor() ? "A" : "B"
+        String ab = key.isMajor() ? "B" : "A"
         // create the final string
         return "$i$ab"
     }
@@ -43,4 +43,3 @@ class CustomKeyRenderer implements KeyTextRenderer {
     }
 
 }
-

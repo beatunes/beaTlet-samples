@@ -17,7 +17,7 @@ include Java::com.tagtraum.beatunes.KeyTextRenderer
         # Let's shift by 8 and make sure 0 is converted to 12.
         i = (key.ordinal + 8) % 12
         i = i == 0 ? 12 : i
-        ab = key.isMajor ? "A" : "B"
+        ab = key.isMinor ? "A" : "B"
         # create the final string
         return "#{i}#{ab}"
     end
@@ -34,4 +34,3 @@ include Java::com.tagtraum.beatunes.KeyTextRenderer
     end
 
 end
-

@@ -13,7 +13,7 @@ class CustomKeyRenderer(KeyTextRenderer):
         i = (key.ordinal() + 8) % 12
         i = 12 if i==0 else i
         # i = i == 0 ? 12 : i
-        ab = "A" if key.isMajor() else "B"
+        ab = "A" if key.isMinor() else "B"
         # create the final string
         return str(i) + ab
 
@@ -25,4 +25,3 @@ class CustomKeyRenderer(KeyTextRenderer):
     # Short name of this renderer. To be used in the user interface.
     def getName(self):
         return "Custom.py"
-

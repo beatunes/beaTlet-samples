@@ -15,7 +15,7 @@ var beatlet = new KeyTextRenderer() {
         // Let's shift by 8 and make sure 0 is converted to 12.
         var i = (key.ordinal() + 8) % 12
         i = i == 0 ? 12 : i
-        var ab = key.isMajor() ? "A" : "B"
+        var ab = key.isMinor() ? "A" : "B"
         // create the final string
         return "" + i + ab;
     },

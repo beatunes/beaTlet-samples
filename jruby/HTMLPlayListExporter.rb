@@ -1,4 +1,4 @@
-# Sample beaTlet for beaTunes 5.x
+# Sample beaTlet for beaTunes 6.x
 # More info at https://www.beatunes.com/en/beatlet-playlistexporter.html
 require 'java'
 
@@ -13,7 +13,7 @@ class HTMLPlayListExporter
     end
 
     # Very short description for this exporter.
-    # Starting with beaTunes 4.6, this method is optional.
+    # This method is optional.
     def getDescription()
         "HTML"
     end
@@ -27,11 +27,11 @@ class HTMLPlayListExporter
 
     # Exports the given playlist to the given file.
     #
-    # file to write to
+    # file to write to, a java.nio.file.Path
     # playlist to export
     # useRelativePathsIfPossible boolean flag
     # progressListener that lets you report... well, progress
-    def export(file, playList, useRelativePathsIfPossible progressListener)
+    def export(file, playList, useRelativePathsIfPossible, progressListener)
         f = nil
         begin
             f = File.new(file.toString, "w")

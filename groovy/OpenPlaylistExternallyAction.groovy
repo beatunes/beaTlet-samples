@@ -1,8 +1,8 @@
-// Sample beaTlet for beaTunes 5.x
+// Sample beaTlet for beaTunes 6.x
 // More info at https://www.beatunes.com/en/beatlet-getting-started.html
 import org.slf4j.LoggerFactory
 import java.awt.Toolkit
-import java.io.File
+import java.nio.file.Files
 import java.awt.event.ActionEvent
 import java.awt.event.*
 import java.awt.Desktop
@@ -27,7 +27,7 @@ class OpenPlaylistExternallyAction extends BaseAction {
     def void init() {
         putValue(Action.NAME, "Open Playlist Externally")
         putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_B,
-            Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()))
+            Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()))
     }
 
     def ActionLocation[] getActionLocations() {
@@ -44,12 +44,13 @@ class OpenPlaylistExternallyAction extends BaseAction {
             //final format = "pls"
             //final format = "xspf"
             final exporter = exporters.findResult { it.getFileExtension().equals(format) ? it : null }
-            final file = File.createTempFile("beaTunes_OpenPlaylistExternally_", "." + format)
+            // exporters write to a java.nio.file.Path
+            final file = Files.createTempFile("beaTunes_OpenPlaylistExternally_", "." + format)
             final playlist = getApplication().getMainWindow().getPlayListTree().getSelectedPlayList()
             log.info("Exporting playlist ${playlist} to ${file}")
-            exporter.export(file, playlist, false null)
+            exporter.export(file, playlist, false, null)
             log.info("Opening ${file} in external program.")
-            Desktop.getDesktop().open(file)
+            Desktop.getDesktop().open(file.toFile())
         } catch (Exception e) {
             log.error("Failed to export and open playlist.", e);
             new MessageDialog(

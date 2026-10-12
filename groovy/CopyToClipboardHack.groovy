@@ -1,4 +1,4 @@
-// Sample beaTlet for beaTunes 5.x
+// Sample beaTlet for beaTunes 6.x
 // Fixes on issue on Mac, where a file copied to the clipboard
 // cannot be pasted into Finder (and some other apps)
 import javax.swing.*
@@ -18,7 +18,7 @@ class CopyToClipboardHack extends BaseAction {
     def void init() {
         putValue(Action.NAME, "Copy Hack")
         putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_C,
-                Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() | InputEvent.ALT_MASK))
+                Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx() | InputEvent.ALT_DOWN_MASK))
         bindListeners(BaseAction.SelectionCount.ONE, BaseAction.EnabledView.SONG_TABLE, BaseAction.EnabledView.MATCH_TABLE)
     }
 

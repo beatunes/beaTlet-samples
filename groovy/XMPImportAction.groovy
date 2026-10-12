@@ -1,4 +1,4 @@
-// Sample beaTlet for beaTunes 5.x
+// Sample beaTlet for beaTunes 6.x
 // More info at https://www.beatunes.com/en/beatlet-getting-started.html
 import org.slf4j.LoggerFactory
 import javax.swing.*
@@ -60,7 +60,8 @@ class XMPImportAction extends BaseAction {
                 // "AudioSong" is the interface we typically use to read and write song properties
                 // It allows manipulation of *both* the database and the file at the same time.
                 final AudioSong song = library.getSong(id)
-                final File file = song.getFile()
+                // getFile() answers a java.nio.file.Path
+                final File file = song.getFile()?.toFile()
                 if (file != null) {
                     log.debug "Searching for \"${xmpMarker}\" in ${file} for ${song}"
                     PushbackInputStream stream = null
@@ -99,7 +100,7 @@ class XMPImportAction extends BaseAction {
                                 }
                             }
                             // make sure, changes are displayed in the UI
-                            song.addPropertyChangeListener(new SongPropertyChangeListener((JTable)getFocusOwner(), song))
+                            SongPropertyChangeListener.installIfAbsent(getApplication(), song)
                             // Only overwrite stuff, if we actually found something.
                             if (name != null) song.setName(name)
                             if (artist != null) song.setArtist(artist)

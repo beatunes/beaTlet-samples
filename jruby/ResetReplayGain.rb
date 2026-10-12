@@ -1,4 +1,4 @@
-# Sample beaTlet for beaTunes 5.x
+# Sample beaTlet for beaTunes 6.x
 # More info at https://www.beatunes.com/en/beatlet-getting-started.html
 require 'java'
 
@@ -40,9 +40,7 @@ class ResetReplayGain < BaseAction
             song = getApplication().getMediaLibrary().getSong(id.to_java(java.lang.Long))
             # register a SongPropertyChangeListener, so that
             # any changes are displayed right away.
-            song.addPropertyChangeListener(
-                SongPropertyChangeListener.new(getApplication().getMainWindow().getSongTable().getTable(), id)
-            )
+            SongPropertyChangeListener.installIfAbsent(getApplication(), song)
             # do something with the object.
             # don't forget that you are on the EDT!
             # so whatever you do here, should be quick.

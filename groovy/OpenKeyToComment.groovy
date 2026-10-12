@@ -1,20 +1,19 @@
-// Sample beaTlet for beaTunes 5.x
+// Sample beaTlet for beaTunes 6.x
 // More info at https://www.beatunes.com/en/beatlet-songanalysistask.html
 import com.tagtraum.audiokern.*
 import com.tagtraum.audiokern.key.*
 import com.tagtraum.beatunes.analysis.*
 import org.slf4j.*
 
-import javax.persistence.Entity
+import jakarta.persistence.Entity
 
 /**
  * Copies tonal open key info to the comments field.
- * THIS TASK REQUIRES beaTunes 3.5.17 OR LATER!!!
  */
 // =============================================================================== //
 // It is *essential* for this class to be annotated as Entity.                     //
 // Otherwise it will not be saved in the analysis queue and cannot be processed.   //
-// Annotations are only available in Java and Groovy, but not in JRuby or Jython.  //
+// Annotations are only available in Java and Groovy, but not in JRuby.            //
 // =============================================================================== //
 @Entity
 class OpenKeyToComment extends SongAnalysisTask {

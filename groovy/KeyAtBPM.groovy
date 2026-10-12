@@ -1,4 +1,4 @@
-// Sample beaTlet for beaTunes 5.x
+// Sample beaTlet for beaTunes 6.x
 // More info at https://www.beatunes.com/en/beatlet-getting-started.html
 import java.awt.Toolkit
 import java.awt.event.*
@@ -27,7 +27,7 @@ class KeyAtBPM extends BaseAction {
         putValue(Action.SHORT_DESCRIPTION, "Shows a table of keys at different BPMs.")
         // register keyboard shortcut Command-K/CTRL-K
         putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_K,
-            Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()))
+            Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()))
         // Only enable this action, when exactly one song is selected
         bindListeners(BaseAction.SelectionCount.ONE,
             BaseAction.EnabledView.SONG_TABLE,

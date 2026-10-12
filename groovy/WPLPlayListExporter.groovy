@@ -1,9 +1,9 @@
-// Sample beaTlet for beaTunes 5.x
+// Sample beaTlet for beaTunes 6.x
 // More info at https://www.beatunes.com/en/beatlet-playlistexporter.html
-import java.io.File
+import java.nio.file.Path
 import com.tagtraum.core.ProgressListener
 import com.tagtraum.beatunes.library.PlayListExporter
-import com.tagtraum.beatunes.library.PlayList
+import com.tagtraum.audiokern.PlayList
 
 /**
  * Simple exporter for the WPL playlist format supported
@@ -17,7 +17,7 @@ class WPLPlayListExporter implements PlayListExporter {
     }
 
     // Very short description for this exporter.
-    // Starting with beaTunes 4.6, this method is optional.
+    // This method is optional.
     def String getDescription() {
         "WPL"
     }
@@ -31,13 +31,13 @@ class WPLPlayListExporter implements PlayListExporter {
 
     // Exports the given playlist to the given file.
     //
-    // file to write to
+    // file to write to, a java.nio.file.Path
     // playlist to export
     // useRelativePathsIfPossible (is ignored in this example)
     // progressListener that lets you report... well, progress
-    def void export(File file, PlayList playList, boolean useRelativePathsIfPossible, ProgressListener progressListener) {
-        file.withWriter { f ->
-            f.writeLine("<?wpl version=\"1.0\"?>\n<smil>\n  <head>\n    <meta name=\"Generator\" content=\"beaTunes4 groovy.wplplaylistexporter\"/>\n"
+    def void export(Path file, PlayList playList, boolean useRelativePathsIfPossible, ProgressListener progressListener) {
+        file.toFile().withWriter { f ->
+            f.writeLine("<?wpl version=\"1.0\"?>\n<smil>\n  <head>\n    <meta name=\"Generator\" content=\"beaTunes6 groovy.wplplaylistexporter\"/>\n"
                 + "    <meta name=\"ItemCount\" content=\"${playList.getUnfilteredSize()}\"/>\n"
                 + "    <title>${toXML(playList.getName())}</title>\n"
                 + "  </head>\n  <body>\n    <seq>")

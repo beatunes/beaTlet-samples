@@ -1,4 +1,4 @@
-// Sample beaTlet for beaTunes 5.x
+// Sample beaTlet for beaTunes 6.x
 // More info at https://www.beatunes.com/en/beatlet-getting-started.html
 import org.slf4j.LoggerFactory
 import javax.swing.*
@@ -12,7 +12,7 @@ import com.tagtraum.beatunes.songtable.SongPropertyChangeListener
 
 /*
  * Please note that this beaTlet only serves as example.
- * Comparable functionality is already built into beaTunes 5.
+ * Comparable functionality is already built into beaTunes.
  *
  * Simple beaTlet for iTunes-based music libraries that allows
  * re-reading some metadata from the underlying file.
@@ -32,7 +32,7 @@ class RefreshFromFileAction extends BaseAction {
         setEnabled(false)
         putValue(Action.NAME, "Refresh from File")
         putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_L,
-            Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()))
+            Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()))
         // enable this action, if one or more items are selected from the given tables
         bindListeners(BaseAction.SelectionCount.ONE_OR_MORE,
             BaseAction.EnabledView.SONG_TABLE, BaseAction.EnabledView.MATCH_TABLE)
@@ -59,7 +59,7 @@ class RefreshFromFileAction extends BaseAction {
                     // make sure we have the latest data
                     audioMetaData.refreshFromFile()
                     // make sure, changes are displayed in the UI
-                    song.addPropertyChangeListener(new SongPropertyChangeListener((JTable)getFocusOwner(), song))
+                    SongPropertyChangeListener.installIfAbsent(getApplication(), song)
 
                     // Importing properties from song file
                     song.setTrackReplayGain(audioMetaData.getTrackReplayGain(), true)

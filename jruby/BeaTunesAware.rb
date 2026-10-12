@@ -1,4 +1,4 @@
-# Sample beaTlet for beaTunes 5.x
+# Sample beaTlet for beaTunes 6.x
 # More info at https://www.beatunes.com/en/beatlet-getting-started.html
 class BeaTunesAware
 
@@ -8,7 +8,7 @@ class BeaTunesAware
         @application = application
     end
 
-    def ApplicationComponent getApplication
+    def getApplication
         @application
     end
 

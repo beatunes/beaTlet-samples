@@ -1,4 +1,4 @@
-# Sample beaTlet for beaTunes 5.x
+# Sample beaTlet for beaTunes 6.x
 # More info at https://www.beatunes.com/en/beatlet-plugindescriptor.html
 require 'java'
 
@@ -17,8 +17,8 @@ class PluginDescriptorDemo
         pd.setDescription("And here we describe what it does ...")
         pd.setLicenseName("LGPL")
         pd.setVersion(Version.new("1.0.0"))
-        pd.setMinBeaTunesVersion(Version.new("3.5.0"))
-        pd.setMaxBeaTunesVersion(Version.new("4.9.9"))
+        pd.setMinBeaTunesVersion(Version.new("6.0.0"))
+        pd.setMaxBeaTunesVersion(Version.new("6.9.9"))
         # etc.
         return pd
     end

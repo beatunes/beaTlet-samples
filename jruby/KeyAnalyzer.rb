@@ -1,4 +1,4 @@
-# Sample beaTlet for beaTunes 5.x
+# Sample beaTlet for beaTunes 6.x
 # More info at https://www.beatunes.com/en/beatlet-songpropertyanalyzer.html
 require 'java'
 
@@ -16,14 +16,26 @@ class KeyAnalyzer
         return "JRuby KeyAnalyzer 1.0.0"
     end
 
-    # How much audio do we need?
-    def getRequiredClip(audioFileFormat)
+    # The sample rate we would like the audio to have, in Hz.
+    def getPreferredSampleRate()
+        return 44100.0
+    end
+
+    # The number of channels we would like the audio to have.
+    def getPreferredChannels()
+        return 1
+    end
+
+    # How much audio do we need? Return nil, if you need the whole file.
+    # durationInSeconds is the length of the song.
+    def getRequiredClip(durationInSeconds)
         # AudioClip takes start and stop times in ms
         return AudioClip.new(0, 120000)
     end
 
     # Create a new pipeline. See Jipes for details.
-    def createPipeline()
+    # This must return a new pipeline every time it is called.
+    def createPipeline(audioFormat, durationInSeconds)
         # Mono does not compute a key. It's merely a stand-in for a real
         # com.tagtraum.jipes.SignalPipeline
         # The id of the processor that computes the key, must be "key".

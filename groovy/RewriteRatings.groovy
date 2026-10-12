@@ -33,7 +33,7 @@ class RewriteRatings extends LibraryBatchAction {
                 song.setRating(song.getRating())
                 // ensure synchronous processing, in order
                 // to not overload the processing queue
-                getMediaLibrary().getTunesExecutor().submit { 42 }.get()
+                getMediaLibrary().getFileWriteCoordinator().getTunesExecutor().submit { 42 }.get()
                 // song.setAlbumRating(song.getAlbumRating())
             } catch (Exception e) {
                 // something went sideways, let's log it
